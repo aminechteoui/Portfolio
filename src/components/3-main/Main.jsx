@@ -9,6 +9,8 @@ const myProjects = [
   { id: 4, title: "Node API", category: "node" },
   { id: 5, title: "Portfolio", category: "css" },
   { id: 6, title: "E-commerce App", category: "react" },
+  { id: 6, title: "E-commerceshop App", category: "react" },
+
 ];
 
 export default function Main() {
