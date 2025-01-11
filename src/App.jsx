@@ -3,7 +3,7 @@ import Header from './components/1_header/Header'
 import Main from './components/3-main/Main'
 import Contact from './components/4-contact/Contact'
 import Footer from './components/5-footer/Footer'
-import Skills from './components/6-skills/Skills';
+import Skills from './components/6-Skills/Skills';
 import { useEffect, useState } from "react";
 
 
