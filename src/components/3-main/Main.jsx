@@ -1,85 +1,125 @@
 import React, { useState } from 'react';
 import './main.css';
+import { AnimatePresence, motion } from "framer-motion";
 
-// Liste des projets avec catégories
+
 const myProjects = [
-  { id: 1, title: "Landing page 1", category: "css" },
-  { id: 2, title: "Interactive App", category: "javascript" },
-  { id: 3, title: "React Dashboard", category: "react" },
-  { id: 4, title: "Node API", category: "node" },
-  { id: 5, title: "Portfolio", category: "css" },
-  { id: 6, title: "E-commerce App", category: "react" },
-  { id: 6, title: "E-commerceshop App", category: "react" },
-
+  { projectTitle: "react project", category: ["react"], imgPath: "./images/1.jpg" },
+  { projectTitle: "react & css project", category: ["react", "css"], imgPath: "./images/2.jpg" },
+  { projectTitle: "css project", category: ["css"], imgPath: "./images/3.jpg" },
+  { projectTitle: "react project", category: ["react"], imgPath: "./images/4.jpg" },
+  { projectTitle: "css project", category: ["css"], imgPath: "./images/5.jpg" },
+  { projectTitle: "javaScript project", category: ["js"], imgPath: "./images/6.jpg" },
+  { projectTitle: "node project", category: ["node"], imgPath: "./images/7.jpg" },
+  { projectTitle: "node project", category: ["node"], imgPath: "./images/8.jpg" },
+  { projectTitle: "javaScript project", category: ["js"], imgPath: "./images/9.jpg" },
 ];
 
 export default function Main() {
-  const [currentActive, setcurrentActive] = useState("all");
 
-  // Filtrage des projets
-  const filteredProjects = currentActive === "all"
-    ? myProjects
-    : myProjects.filter(project => project.category === currentActive);
+  const [currentActive, setcurrentActive] = useState("all");
+  const [arr, setArr] = useState(myProjects);
+
+  const handleClick = (buttonCategory) => {
+    setcurrentActive(buttonCategory);
+
+    const newArr = myProjects.filter((item) =>
+      
+      item.category.includes(buttonCategory));
+   
+   
+      setArr(newArr);
+  };
 
   return (
-    <main className='flex'>
-      {/* Section gauche - Boutons de filtrage */}
-      <section className='left-section flex'>
+    <main id='Main' className="flex">
+      <section className="flex  left-section">
         <button
-          onClick={() => setcurrentActive("all")}
+          onClick={() => {
+            setcurrentActive("all");
+            setArr(myProjects);
+          }}
           className={currentActive === "all" ? "active" : null}
         >
-          All Projects
+          all projects
         </button>
+
         <button
-          onClick={() => setcurrentActive("css")}
+          onClick={() => {
+            handleClick("css");
+          }}
           className={currentActive === "css" ? "active" : null}
         >
-          Html & Css
+          HTML & CSS
         </button>
+
         <button
-          onClick={() => setcurrentActive("javascript")}
-          className={currentActive === "javascript" ? "active" : null}
+          onClick={() => {
+            handleClick("js");
+          }}
+          className={currentActive === "js" ? "active" : null}
         >
           JavaScript
         </button>
         <button
-          onClick={() => setcurrentActive("react")}
+          onClick={() => {
+            handleClick("react");
+          }}
           className={currentActive === "react" ? "active" : null}
         >
           React & MUI
         </button>
         <button
-          onClick={() => setcurrentActive("node")}
+          onClick={() => {
+            handleClick("node");
+          }}
           className={currentActive === "node" ? "active" : null}
         >
           Node & Express
         </button>
       </section>
 
-      {/* Section droite - Affichage des projets */}
-      <section className='right-section flex'>
-        {filteredProjects.map((project) => (
-          <article key={project.id} className='card'>
-            <img width={266} src="./1.jpg" alt="" />
-            <div style={{ width: "266px" }} className="box">
-              <h1 className='title'>{project.title}</h1>
-              <p className='sub-title'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-              <div className="flex icons">
-                <div style={{ gap: "11px" }} className='flex'>
-                  <div className="icon-link"></div>
-                  <div className="icon-github"></div>
+      <section className=" flex right-section">
+        <AnimatePresence>
+          {arr.map((item) => {
+            return (
+              <motion.article
+                layout
+                initial={{ transform: "scale(0.4)" }}
+                animate={{ transform: "scale(1)" }}
+                transition={{ type: "spring", damping: 8, stiffness: 50 }}
+                key={item.imgPath}
+                className="  card"
+              >
+                <img width={266} src={item.imgPath} alt="" />
+
+                <div style={{ width: "266px" }} className="box">
+                  <h1 className="title">{item.projectTitle}</h1>
+                  <p className="sub-title">
+                    Lorem ipsum dolor sit amet consectetur elit adipisicing . Ex
+                    tempore dolor in, accusantium laudantium accusamus.
+                  </p>
+
+                  <div className="flex icons">
+                    <div style={{ gap: "11px" }} className="flex">
+                      <div className="icon-link"></div>
+                      <div className="icon-github"></div>
+                    </div>
+
+                    <a className="link flex" href="">
+                      more
+                      <span
+                        style={{ alignSelf: "end" }}
+                        className="icon-arrow-right"
+                      ></span>
+                    </a>
+                  </div>
                 </div>
-                <a className='link flex' href="">more
-                  <span style={{ alignSelf: "end" }} className='icon-arrow-right'></span>
-                </a>
-              </div>
-            </div>
-          </article>
-        ))}
+              </motion.article>
+            );
+          })}
+        </AnimatePresence>
       </section>
     </main>
   );
-}
-
-
+};

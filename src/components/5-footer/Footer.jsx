@@ -3,15 +3,27 @@ import './footer.css';
 export default function Footer() {
   return (
     <footer className='flex'>
-<ul className='flex'>
-  <li><a href="">About</a></li>
-  <li><a href="">Projects</a></li>
-  <li><a href="">Speaking</a></li>
-  <li><a href="">Uses</a></li>
-</ul>
+      <ul className='flex'>
+      <li>
+            <a href="#Hero">About</a>
+          </li>
+
+          <li>
+            <a href="#Main">Projects</a>
+          </li>
+          <li>
+            <a href="#Skills">Skills</a>
+          </li> 
+          <li>
+            <a href="#Speaking">Speaking</a>
+          </li>
+          <li>
+            <a href="#Contact">Contact</a>
+          </li>
+      </ul>
 
 
-<p>©2024 By Amine Chteoui.</p>
+      <p>©2025 By Amine Chteoui.</p>
 
     </footer>
   )

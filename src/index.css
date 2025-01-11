@@ -20,23 +20,35 @@ html {box-sizing: border-box;}
 }
 
 
+
 :root {
   --primary: #000;
-  --secondary: rgb(24, 24, 27);
-  --border: rgb(63, 63, 70, 0.4);
+  --secondary: rgb(24 24 27);
+  --border: rgba(63, 63, 70, 0.4);
 
-  --title: rgb(244, 244, 245);
-  --subtitle: rgb(161, 161, 170);
+  --title: rgb(244 244 245);
+  --subtitle: rgb(161 161 170);
 
-  --bgheader: rgb(39, 39, 42);
+  --bgHeader: rgb(39, 39, 42);
   --blue: rgb(93, 188, 252);
 
-  --icon-hover:#d4d4d8;
+  --icon-hover: #d4d4d8;
+
+  --container-padding: 4.8rem;
 }
 
 .light {
-  --primary: #fff;
+  --primary: rgb(250, 250, 250);
+  --secondary: rgb(255, 255, 255);
+  --border: rgba(202, 202, 202, 0.518);
 
+  --title: rgb(39 39 42);
+  --subtitle: rgb(82 82 91);
+
+  --bgHeader: rgb(253, 253, 253);
+  --blue: rgb(0, 149, 246);
+
+  --icon-hover: #333;
 }
 
 
@@ -106,7 +118,10 @@ button:active {
   scale: 0.9;
 }
 
-
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 
 
 @media (max-width: 1000px) {
@@ -159,6 +174,7 @@ padding: 0 1.7rem;
     right: 3%;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 1.25rem;
   }
   
   .scroll2Top:hover {
@@ -178,6 +194,7 @@ padding: 0 1.7rem;
     width: 2.2rem;
     height: 2.2rem;
     opacity: 0.6;
+    font-size: 1rem;
   }
   
   }
